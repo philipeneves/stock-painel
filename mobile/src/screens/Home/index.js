@@ -95,12 +95,6 @@ const Home = () => {
             </Title>
 
             <Search accessibilityRole="search">
-              <MaterialCommunityIcons
-                name="briefcase-search"
-                color={colors.lightGray}
-                size={18}
-                style={{ marginEnd: 11, marginStart: -9 }}
-              />
               <Input
                 testID={'search'}
                 placeholder="Buscar ação"
@@ -108,6 +102,12 @@ const Home = () => {
                 selectionColor={colors.lightGray}
                 onEndEditing={(e) => {e.nativeEvent.text.length > 0 ? handleChange(e.nativeEvent.text) : Alert.alert('É necessário buscar uma ação!')} }
                 maxLength={64}
+              />
+              <MaterialCommunityIcons
+                name="magnify"
+                color={colors.lightGray}
+                size={18}
+                style={{ marginEnd: 11, marginEnd: -9 }}
               />
             </Search>
           </Header>

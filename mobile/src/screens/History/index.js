@@ -60,7 +60,6 @@ const History = ({
   })
 
   const renderItem = ({ item }) => {
-    console.log(item)
     return (
       <ItemContainer>
         <Row>

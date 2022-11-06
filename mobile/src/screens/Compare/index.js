@@ -84,7 +84,10 @@ const Compare = () => {
             <TouchableItem onPress={() => handleOpenGains(item)}>
               <ItemContainer>
                 <TextSearch>{item.name}</TextSearch>
-                <TextSearch>{item.lastPrice}</TextSearch>
+                <TextSearch>
+                  {Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(item.lastPrice)
+                      .replace(/^(\D+)/, '$1 ')}
+                </TextSearch>
                 <TextSearch>{date}</TextSearch>
               </ItemContainer>
             </TouchableItem>
@@ -122,15 +125,15 @@ const Compare = () => {
             <TextHeader>COMPARAR</TextHeader>
           </BackContainer>
           <Search accessibilityRole="search">
-            <MaterialCommunityIcons
-              name="briefcase-search"
-              color={colors.lightGray}
-              size={18}
-              style={{ marginEnd: 11, marginStart: -9 }}
-            />
             <Input
               placeholder="Buscar"
               onEndEditing={(e) => handleCompare(e.nativeEvent.text)}
+            />
+            <MaterialCommunityIcons
+              name="magnify"
+              color={colors.lightGray}
+              size={18}
+              style={{ marginStart: 11, marginEnd: -9 }}
             />
           </Search>
         </Header>
