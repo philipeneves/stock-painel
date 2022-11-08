@@ -1,11 +1,11 @@
 import React from "react";
 import {
-  Modal as ModalDefault,
+  Modal as ModalComponent,
   View,
-  StatusBar,
   TouchableOpacity,
+  Keyboard,
+  TouchableWithoutFeedback
 } from "react-native";
-import colors from "../../assets/styles/colors";
 
 import styles from "./styles";
 
@@ -18,22 +18,23 @@ export const Modal = ({
   ...rest
 }) => {
   return (
-    <ModalDefault
+    <ModalComponent
       {...rest}
       animationType="slide"
       transparent
       statusBarTranslucent
       onRequestClose={() => null}
     >
-      <StatusBar barStyle="dark-content" backgroundColor={colors.baseColor} />
       <View style={styles.wrapper}>
         <TouchableOpacity
           style={styles.button}
           activeOpacity={1}
-          onPress={close}
+          onPress={() => Keyboard.dismiss()}
         />
-        <View style={{ ...styles.container, height }}>{children}</View>
+        <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+          <View style={{ ...styles.container, height }}>{children}</View>
+        </TouchableWithoutFeedback>
       </View>
-    </ModalDefault>
+    </ModalComponent>
   );
 };
