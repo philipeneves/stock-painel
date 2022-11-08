@@ -9,15 +9,6 @@ export const Container = styled.View`
   background-color: #f0f0f0;
 `
 
-export const Content = styled.View`
-  width: 100%;
-  height: 100%;
-  align-items: center;
-  border-top-left-radius: 45px;
-  background-color: ${colors.white};
-  padding: 16px;
-`
-
 export const TextHeader = styled.Text`
   color: #fff;
   font-size: 16px;
@@ -56,15 +47,16 @@ export const TextSearch = styled.Text`
   font-weight: 600;
 `
 
+export const TextValue = styled.Text`
+  color: #34495E;
+  font-size: 14px;
+  font-weight: 400;
+`
+
 export const EmptyTextList = styled.Text`
   color: #34495E;
   font-size: 20px;
   font-weight: 600;
-`
-
-export const IconContainer = styled.View`
-  flex: 1;
-  align-items: center;
 `
 
 export const TouchableItem = styled.TouchableOpacity`
@@ -117,4 +109,9 @@ export const FlatList = styled.FlatList`
 
 export const BackButton = styled.TouchableOpacity`
   margin-right: 16px;
+`
+
+export const Row = styled.View`
+  flex-direction: row;
+  justify-content: space-between;
 `

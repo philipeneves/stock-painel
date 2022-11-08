@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 import {
   ActivityIndicator,
   Alert,
@@ -6,12 +6,12 @@ import {
   TouchableWithoutFeedback,
   View,
   Dimensions
-} from 'react-native';
-import { MaterialCommunityIcons, AntDesign } from '@expo/vector-icons';
-import moment from 'moment';
+} from 'react-native'
+import { MaterialCommunityIcons, AntDesign } from '@expo/vector-icons'
+import moment from 'moment'
 import {
   useNavigation,
-} from '@react-navigation/native';
+} from '@react-navigation/native'
 
 import {
   BackButton,
@@ -28,82 +28,87 @@ import {
   Separator,
   TextHeader,
   TextSearch,
-  TouchableItem
-} from './styles';
+  TouchableItem,
+  TextValue,
+  Row
+} from './styles'
 
-import { useStockState } from '../../contexts/Stock';
-import Detail from '../Detail';
-import { Modal } from '../../components/Modal';
+import { useStockState } from '../../contexts/Stock'
+import Detail from '../Detail'
+import { Modal } from '../../components/Modal'
 
-import { getStockCompared } from '../../services/api';
+import { getStockCompared } from '../../services/api'
 
-import colors from '../../assets/styles/colors';
+import colors from '../../assets/styles/colors'
 
 const Compare = () => {
-  const [stockModal, setStockModal] = useState({});
-  const [loading, setLoading] = useState(false);
-  const [visible, setVisible] = useState(false);
+  const [stockModal, setStockModal] = useState({})
+  const [loading, setLoading] = useState(false)
+  const [visible, setVisible] = useState(false)
 
-  const { stock } = useStockState();
-  const navigation = useNavigation();
-  const { mutate, data: stockResult } = getStockCompared();
-  const windowWidth = Dimensions.get('screen').width
+  const { stock } = useStockState()
+  const navigation = useNavigation()
+  const { mutate, data: stockResult } = getStockCompared()
 
   const handleCompare = async (stocksCompare) => {
-    setLoading(true);
-    let stockCompareValues = [];
-    stockCompareValues.push(stocksCompare);
+    setLoading(true)
+    let stockCompareValues = []
+    stockCompareValues.push(stocksCompare)
 
     mutate(
       { stockName: stock.name, stocksToCompare: stockCompareValues },
       {
         onError(error) {
-          return Alert.alert(error.message);
+          return Alert.alert(error.message)
         },
         onSettled() {
-          setTimeout(() => setLoading(false), 2000);
+          setTimeout(() => setLoading(false), 2000)
         },
       }
-    );
-  };
+    )
+  }
 
   const handleOpenGains = (item) => {
-    setStockModal(item);
-    setVisible(true);
-  };
+    setStockModal(item)
+    setVisible(true)
+  }
 
   const renderItem = ({ item, index }) => {
     const date = moment(new Date(item?.pricedAt)).format('DD/MM/yyyy')
 
     return (
       <View>
-        {loading && index === 1 ? (
-          <ActivityIndicator size='large' />
-        ) : (
-          <View>
-            <TouchableItem onPress={() => handleOpenGains(item)}>
-              <ItemContainer>
-                <TextSearch>{item.name}</TextSearch>
-                <TextSearch>
-                  {Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(item.lastPrice)
-                      .replace(/^(\D+)/, '$1 ')}
-                </TextSearch>
-                <TextSearch>{date}</TextSearch>
-              </ItemContainer>
-            </TouchableItem>
+        <TouchableItem onPress={() => handleOpenGains(item)}>
+          <ItemContainer>
+            <TextSearch>{item.name}</TextSearch>
+            <Row>
+              <TextValue>
+                Data:
+              </TextValue>
+              <TextValue>{date}</TextValue>
+            </Row>
+            <Row>
+              <TextValue>
+                Fechou em:
+              </TextValue>
+              <TextValue>
+                {Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(item.lastPrice)
+                    .replace(/^(\D+)/, '$1 ')}
+              </TextValue>
+            </Row>
+          </ItemContainer>
+        </TouchableItem>
 
-            {stockResult?.lastPrices?.length < 2 && (
-              <EmptyContainer>
-                <EmptyTextList>
-                  Nenhuma ação encontrada.
-                </EmptyTextList>
-              </EmptyContainer>
-            )}
-          </View>
+        {stockResult?.lastPrices?.length < 2 && (
+          <EmptyContainer>
+            <EmptyTextList>
+              Nenhuma ação encontrada.
+            </EmptyTextList>
+          </EmptyContainer>
         )}
       </View>
-    );
-  };
+    )
+  }
 
   const renderSeparator = () => {
     return (
@@ -138,14 +143,16 @@ const Compare = () => {
           </Search>
         </Header>
         <ListContainer>
-          <FlatList
-            data={stockResult?.lastPrices}
-            horizontal
-            scrollEnabled={false}
-            keyExtractor={(item, index) => `${item}-${index}`}
-            renderItem={renderItem}
-            ItemSeparatorComponent={renderSeparator}
-          />
+          {loading ?
+            <ActivityIndicator color={colors.accentColor} size='large' /> : 
+            <FlatList
+              data={stockResult?.lastPrices}
+              horizontal
+              scrollEnabled={false}
+              keyExtractor={(item, index) => `${item}-${index}`}
+              renderItem={renderItem}
+              ItemSeparatorComponent={renderSeparator}
+            />}
         </ListContainer>
 
         <Modal height={400} visible={visible} close={() => setVisible(false)}>
@@ -153,6 +160,6 @@ const Compare = () => {
         </Modal>
       </Container>
     </TouchableWithoutFeedback>
-  );
-};
-export default Compare;
+  )
+}
+export default Compare

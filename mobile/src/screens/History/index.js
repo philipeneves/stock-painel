@@ -74,7 +74,7 @@ const History = ({
         <Text style={{ color: colors.black }}>Abriu em: {Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(item.opening)
               .replace(/^(\D+)/, '$1 ')}</Text>
         <Text style={{ color: colors.black }}>
-          Fechado em: {Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(item.closing)
+          Fechou em: {Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(item.closing)
               .replace(/^(\D+)/, '$1 ')}
         </Text>
         <Text style={{ color: colors.black }}>
