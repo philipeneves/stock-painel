@@ -1,5 +1,5 @@
-import { useMutation } from "@tanstack/react-query"
-import { adgrowthAPI } from "."
+import { useMutation } from '@tanstack/react-query'
+import { adgrowthAPI } from '.'
 import { Alert } from 'react-native'
 
 export const getStockQuote = () => {

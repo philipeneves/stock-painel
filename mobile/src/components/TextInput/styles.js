@@ -1,4 +1,4 @@
-import {  Dimensions, Platform } from 'react-native'
+import {  Dimensions } from 'react-native'
 import styled from 'styled-components/native'
 
 import colors from '../../assets/styles/colors'

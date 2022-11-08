@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import {
   ActivityIndicator,
   Alert,
@@ -6,12 +6,12 @@ import {
   TouchableWithoutFeedback,
   View,
   Dimensions
-} from "react-native";
-import { MaterialCommunityIcons, AntDesign } from "@expo/vector-icons";
-import moment from "moment";
+} from 'react-native';
+import { MaterialCommunityIcons, AntDesign } from '@expo/vector-icons';
+import moment from 'moment';
 import {
   useNavigation,
-} from "@react-navigation/native";
+} from '@react-navigation/native';
 
 import {
   BackButton,
@@ -29,15 +29,15 @@ import {
   TextHeader,
   TextSearch,
   TouchableItem
-} from "./styles";
+} from './styles';
 
-import { useStockState } from "../../contexts/Stock";
-import Detail from "../Detail";
-import { Modal } from "../../components/Modal";
+import { useStockState } from '../../contexts/Stock';
+import Detail from '../Detail';
+import { Modal } from '../../components/Modal';
 
-import { getStockCompared } from "../../services/api";
+import { getStockCompared } from '../../services/api';
 
-import colors from "../../assets/styles/colors";
+import colors from '../../assets/styles/colors';
 
 const Compare = () => {
   const [stockModal, setStockModal] = useState({});
@@ -73,12 +73,12 @@ const Compare = () => {
   };
 
   const renderItem = ({ item, index }) => {
-    const date = moment(new Date(item?.pricedAt)).format("DD/MM/yyyy")
+    const date = moment(new Date(item?.pricedAt)).format('DD/MM/yyyy')
 
     return (
       <View>
         {loading && index === 1 ? (
-          <ActivityIndicator size="large" />
+          <ActivityIndicator size='large' />
         ) : (
           <View>
             <TouchableItem onPress={() => handleOpenGains(item)}>
@@ -120,17 +120,17 @@ const Compare = () => {
               activeOpacity={0.7}
               onPress={() => navigation.goBack()}
             >
-              <AntDesign name="left" size={20} color={colors.white} />
+              <AntDesign name='left' size={20} color={colors.white} />
             </BackButton>
             <TextHeader>COMPARAR</TextHeader>
           </BackContainer>
-          <Search accessibilityRole="search">
+          <Search accessibilityRole='search'>
             <Input
-              placeholder="Buscar"
+              placeholder='Buscar'
               onEndEditing={(e) => handleCompare(e.nativeEvent.text)}
             />
             <MaterialCommunityIcons
-              name="magnify"
+              name='magnify'
               color={colors.lightGray}
               size={18}
               style={{ marginStart: 11, marginEnd: -9 }}

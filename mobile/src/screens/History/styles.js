@@ -1,5 +1,5 @@
 import styled from 'styled-components/native'
-import colors from "../../assets/styles/colors"
+import colors from '../../assets/styles/colors'
 
 export const Header = styled.View`
   background-color: #028FFF;

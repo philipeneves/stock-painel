@@ -1,5 +1,5 @@
-import React from "react";
+import React from 'react'
 
-const StockContext = React.createContext({});
+const StockContext = React.createContext({})
 
-export default StockContext;
+export default StockContext

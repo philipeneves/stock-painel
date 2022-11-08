@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState } from 'react'
 import {
   ActivityIndicator,
   Alert,
@@ -6,13 +6,13 @@ import {
   TouchableWithoutFeedback,
   View,
   TouchableOpacity,
-} from "react-native"
+} from 'react-native'
 import {
   useNavigation,
-} from "@react-navigation/native"
-import moment from "moment"
+} from '@react-navigation/native'
+import moment from 'moment'
 
-import { getStockQuote } from "../../services/api"
+import { getStockQuote } from '../../services/api'
 const { MaterialCommunityIcons } = require('@expo/vector-icons'); 
 
 import {
@@ -35,15 +35,15 @@ import {
   CardButtonText,
   ValueTitle,
   ExptyText
-} from "./styles"
-import Wrapper from "../../components/Wrapper"
+} from './styles'
+import Wrapper from '../../components/Wrapper'
 
-import { Modal } from "../../components/Modal"
-import Detail from "../Detail"
+import { Modal } from '../../components/Modal'
+import Detail from '../Detail'
 
-import { useStockState } from "../../contexts/Stock"
+import { useStockState } from '../../contexts/Stock'
 
-import colors from "../../assets/styles/colors"
+import colors from '../../assets/styles/colors'
 
 const Home = () => {
   const [loading, setLoading] = useState(false)
@@ -82,8 +82,8 @@ const Home = () => {
   }
 
   const date =  searchResult?.pricedAt
-    ? moment(new Date(searchResult?.pricedAt)).format("DD/MM/yyyy")
-    : ""
+    ? moment(new Date(searchResult?.pricedAt)).format('DD/MM/yyyy')
+    : ''
 
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss}>
@@ -94,17 +94,17 @@ const Home = () => {
               PAINEL DO INVESTIDOR
             </Title>
 
-            <Search accessibilityRole="search">
+            <Search accessibilityRole='search'>
               <Input
                 testID={'search'}
-                placeholder="Buscar ação"
+                placeholder='Buscar ação'
                 placeholderTextColor={colors.lightGray}
                 selectionColor={colors.lightGray}
                 onEndEditing={(e) => {e.nativeEvent.text.length > 0 ? handleChange(e.nativeEvent.text) : Alert.alert('É necessário buscar uma ação!')} }
                 maxLength={64}
               />
               <MaterialCommunityIcons
-                name="magnify"
+                name='magnify'
                 color={colors.lightGray}
                 size={18}
                 style={{ marginEnd: 11, marginEnd: -9 }}
@@ -114,7 +114,7 @@ const Home = () => {
 
           <Content>
             {loading ? (
-              <ActivityIndicator style={{ marginTop: 40 }} size="large" />
+              <ActivityIndicator style={{ marginTop: 40 }} size='large' />
             ) : (
               <>
                 {!isError && searchResult?.name && (

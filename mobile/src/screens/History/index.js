@@ -1,19 +1,19 @@
-import React, { useCallback, useEffect, useReducer, useState } from "react"
+import React, { useCallback, useEffect, useReducer, useState } from 'react'
 import {
   ActivityIndicator,
   FlatList,
   Text,
   View
 } from 'react-native'
-import { AntDesign } from "@expo/vector-icons"
+import { AntDesign } from '@expo/vector-icons'
 import {
   useNavigation,
-} from "@react-navigation/native"
-import moment from "moment"
+} from '@react-navigation/native'
+import moment from 'moment'
 
-import Wrapper from "../../components/Wrapper"
+import Wrapper from '../../components/Wrapper'
 
-import { getStockHistory } from "../../services/api"
+import { getStockHistory } from '../../services/api'
 
 import {
   Header,
@@ -25,8 +25,8 @@ import {
   ItemContainer,
   ItemDate,
   Row
-} from "./styles"
-import colors from "../../assets/styles/colors"
+} from './styles'
+import colors from '../../assets/styles/colors'
 
 const History = ({
   route,
@@ -52,7 +52,7 @@ const History = ({
         setHistoryData([])
         setShowEmptyRender(true)
       } else {
-        Alert.alert("Serviço indisponível.")
+        Alert.alert('Serviço indisponível.')
       }
     } finally {
       setLoading()
@@ -85,7 +85,7 @@ const History = ({
   }
 
   const listEmptyComponent = () => (
-    <View style={{ alignItems: "center" }}>
+    <View style={{ alignItems: 'center' }}>
       {showEmptyRender && (
         <TextSearch>Nenhum histórico encontrado.</TextSearch>
       )}
@@ -109,14 +109,14 @@ const History = ({
             activeOpacity={0.7}
             onPress={() => navigation.goBack()}
           >
-            <AntDesign name="left" size={24} color={colors.white} />
+            <AntDesign name='left' size={24} color={colors.white} />
           </BackButton>
           <TextHeader>HISTÓRICO</TextHeader>
         </BackContainer>
       </Header>
       {loading ? (
         <ActivityIndicator
-          size="large"
+          size='large'
           style={{ marginTop: 16 }}
           color={colors.accentColor}
         />

@@ -1,6 +1,6 @@
-import * as React from "react";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { Home, Compare, History } from "../screens";
+import * as React from 'react';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { Home, Compare, History } from '../screens';
 
 const StackRoute = createNativeStackNavigator();
 
@@ -10,8 +10,8 @@ const MainRoutes = () => {
       initialRouteName={'HOME'}
       screenOptions={{
         headerShown: false,
-        animation: "slide_from_right",
-        animationTypeForReplace: "pop",
+        animation: 'slide_from_right',
+        animationTypeForReplace: 'pop',
       }}
     >
       <StackRoute.Screen name={'HOME'} component={Home} />

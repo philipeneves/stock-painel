@@ -1,26 +1,26 @@
-import React from "react";
+import React from 'react'
 import {
   Modal as ModalComponent,
   View,
   TouchableOpacity,
   Keyboard,
   TouchableWithoutFeedback
-} from "react-native";
+} from 'react-native'
 
-import styles from "./styles";
+import styles from './styles'
 
 
 export const Modal = ({
   height,
   close,
-  animationType = "fade",
+  animationType = 'fade',
   children,
   ...rest
 }) => {
   return (
     <ModalComponent
       {...rest}
-      animationType="slide"
+      animationType='slide'
       transparent
       statusBarTranslucent
       onRequestClose={() => null}
@@ -36,5 +36,5 @@ export const Modal = ({
         </TouchableWithoutFeedback>
       </View>
     </ModalComponent>
-  );
-};
+  )
+}

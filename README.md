@@ -1,6 +1,6 @@
 ##Alive-app
 
-# Descrição
+## Descrição
 
 Aplicações para permitir que pequenos investidores possam tomar decisões melhores sobre seu portfólio. Uma das funcionalidades importantes é a de verificar o desempenho de uma ação nos seguintes cenários:
 
@@ -29,4 +29,5 @@ Aplicações para permitir que pequenos investidores possam tomar decisões melh
 
 - Abra a pasta do projeto mobile no terminal <br/>
 - Executar o comando `yarn` para instalar as dependências do projeto <br/>
+- Alterar o valor da constante presente no arquivo 'consts.js' em 'src/services' para o endereço ip da máquina <br/>
 - Executar o comando `expo start` para iniciar o aplicativo <br/>

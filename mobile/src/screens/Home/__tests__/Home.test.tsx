@@ -1,7 +1,7 @@
-import React from "react";
-import { render, act, fireEvent, waitFor } from "@testing-library/react-native";
+import React from 'react';
+import { render, act, fireEvent, waitFor } from '@testing-library/react-native';
 import Home from '..'
-import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
+import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 import renderer from 'react-test-renderer'
 
 describe('Home', () => {

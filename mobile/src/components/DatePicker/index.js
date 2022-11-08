@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { View, Text, TouchableWithoutFeedback, Dimensions } from 'react-native'
+import { View, TouchableWithoutFeedback, Dimensions } from 'react-native'
 import DateTimePickerModal from 'react-native-modal-datetime-picker'
 import moment from 'moment'
 
